@@ -15,19 +15,19 @@ router.post('/login',function(req,res) {
   User.findOne({username:username},function(err,user) {
     if(err){
       console.log(err);
-      return res.status(500).send();
+      return res.status(500).send("greska");
     }
 
     if(!user){
-      return res.status(404).send();
+      return res.status(404).send("pogresan username");
     }
 
   user.comparePassword(password,function (err,isMatch) {
       if(isMatch && isMatch == true){
         req.session.user=user;
-        return res.status(200).send();
+        return res.status(200).send("Uspesno ulogovani! ");
       }else{
-        return res.status(401).send();
+        return res.status(401).send("Pogresna lozinka");
       }
     });
     
@@ -37,7 +37,7 @@ router.post('/login',function(req,res) {
 
 router.get('/logout', function (req,res) {
   req.session.destroy();
-  res.status(200).send();
+  res.status(200).send("Uspesno izlogovani! ");
 })
 
 router.post('/register',function (req,res) {
@@ -46,6 +46,9 @@ router.post('/register',function (req,res) {
   var firstname=req.body.firstname;
   var lastname=req.body.lastname;
 
+  if(username=='' || lastname=='' || firstname=='' || password==''){
+    return res.status(400).send("Nisu sva polja popunjena!");
+  } else{
   var newuser=new User();
   newuser.username=username;
   newuser.lastname=lastname;
@@ -55,11 +58,13 @@ router.post('/register',function (req,res) {
   newuser.save(function (err,savedUser) {
     if(err){
       console.log(err);
-      return res.status(400).send();
+      return res.status(400).send("Greska! ");
     }
 
-    return res.status(200).send();
+    return res.status(200).send("uspesno registrovani! ");
+
   })
+  }
 })
 
 
