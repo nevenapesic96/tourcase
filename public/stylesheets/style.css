@@ -1,8 +1,10 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.btn-start {
+  margin-top:10px;
+  margin-left:15px;
 }
-
-a {
-  color: #00B7FF;
+.game-view {
+  padding:50px 0;
+}
+.text-heading {
+  margin-bottom:30px;
 }
