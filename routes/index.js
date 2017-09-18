@@ -7,11 +7,26 @@ router.get('/', function(req, res, next) {
   });
 
   router.get('/dvaIgraca',function (req,res) {
+    if(!req.session.user){
+      res.render('index.ejs');
+      console.log(1);
+    }else{
     res.render('dvaIgraca.ejs',{user:req.session.user});
+    console.log(2);
+  }
   });
 
+  router.get('/login',function (req,res) {
+    if(!req.session.user)
+      res.render('index.ejs');
+    else
+      res.render('jedanIgrac.ejs',{user:req.session.user});
+  });
 
   router.post('/login',function(req,res) {
+    if(!req.body){
+      res.render('index.ejs');
+    }else{
     var username=req.body.username;
     var password=req.body.password;
   
@@ -40,6 +55,7 @@ router.get('/', function(req, res, next) {
       });
       
     })
+  }
   });
 
   router.get('/logout', function (req,res) {
@@ -68,21 +84,20 @@ router.get('/', function(req, res, next) {
         return res.status(400).send("Greska! ");
       }
   
-      return res.status(200).send("uspesno registrovani! ");
+      res.render('jedanIgrac.ejs',{user:req.session.user});
   
     })
     }
   })
   
   
-  router.get('/dashboard',function (req,res) {
-    console.log(req.session.user); 
+  router.get('/jedanIgrac',function (req,res) {
   
     if(!req.session.user){
-      return res.status(401).send('Nisi ulogovan');
+      res.render('index.ejs');
     }
   
-    return res.status(200).send('Ulogovan si');
+    res.render('jedanIgrac.ejs',{user:req.session.user});
   })
   
   module.exports = router;

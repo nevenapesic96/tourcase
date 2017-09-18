@@ -11,7 +11,8 @@ socket.on('listaOnline',function (data) {
 socket.on('proslediIzazov',function (data) {
     var izazivac=data.username;
     //ovde treba da se ubaci fja da izadje prozor koji salje zahtev za challange
-    alert("izaziva te "+izazivac);
+    proslediIzazov(izazivac);
+    
 });
 
 socket.on('nece',function (data) {
@@ -20,6 +21,11 @@ socket.on('nece',function (data) {
 
 socket.on('hoce',function (data) {
     alert(data.msg);
+});
+
+socket.on('napustio',function (data) {
+   alert(data.user+ ' je napustio igru');
+   //vrati ga na /login
 });
 
 function hocu() {
@@ -42,3 +48,16 @@ function izazovi(gamerName){
 function konektuj(){
     socket.emit('konektujSe',{username:ime.value});
 };
+
+function proba(){
+    var xmlHttl=new XMLHttpRequest();
+
+    xmlHttl.onreadystatechange=function (url,callback) {
+        if(xmlHttl.status==200 && xmlHttl.readyState==4){
+            //sta ovde treba
+        }
+    }
+    
+    xmlHttl.open('GET','/dvaIgraca',false);
+    xmlHttl.send();
+}

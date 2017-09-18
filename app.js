@@ -60,25 +60,22 @@ io.on('connection',function (socket) {
         var socketZa=sockets[data.player2];
         gamesUser[data.player2]=usernames[socket.id];
         gamesUser[usernames[socket.id]]=data.player2;
-        //gamesSoc[socket.id]=socketZa;
-       // gamesSoc[socketZa]=socket.id;
         console.log(gamesUser[data.player2]+" salje: "+data.player2);
         socket.broadcast.to(socketZa).emit('proslediIzazov',{username:usernames[socket.id]});
       });
 
       socket.on('hocu',function () {
         socket.broadcast.to(sockets[gamesUser[usernames[socket.id]]]).emit('hoce',{msg:'Hoce da igra'});
-        //socket.broadcast.to(gamesSoc[socket.id]).emit('hoce',{msg:'Hoce da igra'});
+       
         console.log(usernames[socket.id]+" i "+gamesUser[usernames[socket.id]]);
       });
     
       socket.on('necu',function () {
         socket.broadcast.to(sockets[gamesUser[usernames[socket.id]]]).emit('nece',{msg:'Nece da igra'});
-       // socket.broadcast.to(gamesSoc[socket.id]).emit('nece',{msg:'Nece da igra'});
+       
        delete gamesUser[gamesUser[usernames[socket.id]]]; 
        delete gamesUser[usernames[socket.id]];
-       //delete gamesSoc[gamesSoc[socket.id]];
-        //delete gamesSoc[socket.id];
+       
       });
 
       socket.on('rekonektujSe',function (data) {
@@ -100,6 +97,13 @@ io.on('connection',function (socket) {
 
         if(index!=-1){
         onlineUsers.splice(index,1);
+        /*
+        if(gamesUser[usernames[socket.id]]){
+          socket.broadcast.to(sockets[gamesUser[usernames[socket.id]]]).emit('napustio',{user:usernames[socket.id]});
+          delete gamesUser[gamesUser[usernames[socket.id]]]; 
+          delete gamesUser[usernames[socket.id]];
+        }
+        */
         delete sockets[usernames[socket.id]];
         delete usernames[socket.id];
         console.log('Client gone: ',socket.id);

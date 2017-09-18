@@ -206,6 +206,8 @@ var span = document.getElementsByClassName("close")[0];
 
 function targetGamer(gamerName) {
     izazovi(gamerName);
+
+    modal.style.display = "none";
 }
 
 // When the user clicks on the button, open the modal 
@@ -214,13 +216,21 @@ btn.onclick = function() {
     vratiOnline();
 }
 
+
+var curUser=document.getElementById("ime").value;
+
 function ispisiNiz(niz){
     modal.style.display = "block";
     var gamersList = document.getElementById("gamers-list");
     gamersList.innerHTML = "";
+
     for(var i=0; i<niz.length; i++) {
+        if(niz[i]!=curUser)
         gamersList.innerHTML += "<p><a onclick=\"targetGamer('"+niz[i]+"')\">"+niz[i]+"</a></p>";
     }
+
+    if(gamersList.innerHTML=="")
+        gamersList.innerHTML="Trenutno nema online igraca";
 
 }
 
@@ -235,5 +245,13 @@ span.onclick = function() {
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
+    }
+}
+
+function proslediIzazov(izazivac){
+    if(confirm(izazivac+ " te izaziva, prihvatas izazov? ")){
+        hocu();
+    }else{
+        necu();
     }
 }
