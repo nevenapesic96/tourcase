@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Tour case</title>
+  <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+  <link href="/stylesheets/style.css" rel="stylesheet">
+
+</head>
+  <body>
+        <input type="hidden" value="<%= user.username %>" id="ime"><br>
+
+    <form action="/logout" method="get">
+        <input type="submit" value="logout"/>
+    </form>
+
+
+    <div class="stopwatch"></div>
+
+
+    <section class="game-view">
+            <div class="container">
+             <h1 class="text-center text-heading">Tour case</h1>
+              
+              <div class="col-sm-8" style="height:400px">
+                <img id="myCanvas" src="images/bg.jpg" class="col-sm-12" style="height:100%" alt="alttext" usemap="#mapname">
+        
+                <map name="mapname" id="mapname">
+                        <area id="areaitem1" onclick="foundImage('item1',event)" data-img="images/3.png"  alt="" title="" href="#" shape="poly" coords="55,247,56,310,106,311,102,249" />
+                        
+                        <area id="areaitem2" onclick="foundImage('item2',event)" data-img="images/4.png" alt="" title="" href="#" shape="poly" coords="48,619,90,614,87,397,65,396,60,395" />
+                        
+                        <area id="areaitem3" onclick="foundImage('item3',event)" data-img="images/7.png" alt="" title="" href="#" shape="poly" coords="200,596,250,509,411,539,378,630" />
+                        
+                        <area id="areaitem4" onclick="foundImage('item4',event)" data-img="images/2.png" alt="" title="" href="#" shape="poly" coords="346,446,322,494,386,501,415,456" />
+                        
+                        <area id="areaitem5" onclick="foundImage('item5',event)" data-img="images/1.png" alt="" title="" href="#" shape="poly" coords="835,342,831,201,898,204,890,335" />
+                        
+                        <area id="areaitem6" onclick="foundImage('item6',event)" data-img="images/5.png" alt="" title="" href="#" shape="poly" coords="1137,369,1136,275,1268,272,1256,367" />
+                        
+                        <area id="areaitem7" onclick="foundImage('item7',event)" data-img="images/6.png" alt="" title="" href="#" shape="poly" coords="1855,460,1772,483,1779,637,1824,637,1891,541,1985,549,1992,484,1936,465" />
+                        
+                    </map>
+                <img src="" id="rotateitem" style="display: none; position:absolute; left: 279px; height: 102px; width: 25px; top: 120px;"
+                />
+              </div> <!--col-sm-8-->
+        
+              
+              <div class="col-sm-4">
+                <ul class="list-group">
+                  <li id="item1" class="list-group-item">Avalski toranj</li>
+                  <li id="item2" class="list-group-item">Pobednik</li>
+                  <li id="item3" class="list-group-item">Teniski teren</li>
+                  <li id="item4" class="list-group-item">Spomenik knezu Mihailu</li>
+                  <li id="item5" class="list-group-item">Beogradjanka</li>
+                  <li id="item6" class="list-group-item">Hram Svetog Save</li>
+                  <li id="item7" class="list-group-item">Kombank arena</li>
+                </ul>
+              </div> <!--col-sm-4-->
+              <div> 
+                <button class="btn btn-primary btn-start" onclick="resetGame();">Restart</button>
+                <button class="btn btn-primary btn-start" onclick="hint();">Hint</button>
+                <button class="btn btn-primary btn-start" id="gamersBtn">Online igraci</button>
+            </div>
+      
+                    <!-- The Modal -->
+              <div id="myModal" class="modal">
+      
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <div id="gamers-list">
+                  </div>
+                </div>
+      
+              </div>
+      
+          </div> <!---container -->
+      
+        </section>
+
+        <button onclick="hocu()">hocu</button>
+        <button onclick="necu()">necu</button>
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/javascripts/socketPlayer1.js"></script>    
+  
+    <script src="/javascripts/jquery.min.js"></script>
+    <script src="/javascripts/resizer.js"></script>
+    <script src="/javascripts/rotate.js"></script>
+    <script src="/javascripts/glow.js"></script>
+    <script src="/javascripts/jedanPlayer.js"></script>
+  </body>
+  </html>
