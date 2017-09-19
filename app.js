@@ -18,6 +18,8 @@ var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
+var Score=require('./lib/Score');
+
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -59,13 +61,6 @@ io.on('connection',function (socket) {
     socket.on('izazovi',function (data) {
         var socketZa=sockets[data.player2];
         
-        var index=gamesUser.indexOf(usernames[socket.id]);
-        
-          if(index!=-1){
-            console.log(index);
-               delete gamesUser[index];
-          }
-
         gamesUser[data.player2]=usernames[socket.id];
         gamesUser[usernames[socket.id]]=data.player2;
         console.log(gamesUser[data.player2]+" salje: "+data.player2);
@@ -91,7 +86,7 @@ io.on('connection',function (socket) {
         sockets[user]=socket.id;
         usernames[socket.id]=user;
         console.log("User: "+user);
-        onlineUsers.push(user);
+       // onlineUsers.push(user);
       });
 
       socket.on('player1',function (data) {
@@ -102,6 +97,34 @@ io.on('connection',function (socket) {
 
       socket.on('gotovaIgra',function () {
         delete gamesUser[usernames[socket.id]];
+      });
+
+      socket.on('upisiUBazu',function (data) {
+        var newscore=new Score();
+        newscore.username=usernames[socket.id];
+        newscore.score=data.brPoena;
+      
+        newscore.save(function (err,savedScore) {
+          if(err){
+            console.log(err);
+            return res.status(400).send("Greska! ");
+          }
+      
+          console.log(usernames[socket.id]+" "+data.brPoena);
+      
+        })
+      });
+
+      socket.on('prikaziNajbolje',function () {
+
+          Score.find().sort({'score':1}).limit(1).exec(function (err,doc) {
+            if(err) console.log(err);
+
+            else socket.emit('listaNajboljih',{najbolji:doc});
+            //console.log(doc[0].username);
+            
+          })
+
       });
 
     socket.on('disconnect',function () {

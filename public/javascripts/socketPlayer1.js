@@ -28,6 +28,18 @@ socket.on('napustio',function (data) {
    //vrati ga na /login
 });
 
+socket.on('listaNajboljih',function (data) {
+   // alert(data.najbolji[0].username);
+    ispisiNajbolje(data.najbolji);
+});
+
+function upisiRezultat(brPoena){
+    socket.emit('upisiUBazu',{brPoena:brPoena});
+};
+
+function prikaziNajbolje(){
+    socket.emit('prikaziNajbolje');
+}
 function hocu() {
     socket.emit('hocu');
     window.open('dvaIgraca','_self');

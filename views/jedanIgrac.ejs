@@ -16,6 +16,18 @@
         <input type="submit" value="logout"/>
     </form>
 
+    <div id="najboljiModal" class="modal">
+      
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <div id="najbolji-list">
+                  </div>
+                </div>
+      
+     </div>
+
+    <button onclick="prikaziNajbolje()">Prikazi najbolje</button>
 
     <div class="stopwatch"></div>
 
@@ -80,10 +92,6 @@
           </div> <!---container -->
       
         </section>
-
-        <button onclick="hocu()">hocu</button>
-        <button onclick="necu()">necu</button>
-
 
 
     <script src="/socket.io/socket.io.js"></script>

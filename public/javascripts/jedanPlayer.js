@@ -131,7 +131,7 @@ let stopwatch = new Stopwatch(
                stopwatch.stop();
 
                //ovde ide fja za upis u bazu
-     
+                upisiRezultat(brojPoena);
              }
              $('#mapname').imageMapResize();
            } // [Function] completed callback
@@ -140,7 +140,7 @@ let stopwatch = new Stopwatch(
      
      }
 
-
+     
     function vratiRandomElement(){
         var brojElemenata = slike.length;
     
@@ -262,4 +262,18 @@ function proslediIzazov(izazivac){
     }else{
         necu();
     }
+}
+
+function ispisiNajbolje(najbolji){
+    modal.style.display = "block";
+    var najboljiList = document.getElementById("najbolji-list");
+    najboljiList.innerHTML = "";
+
+    for(var i=0; i<najbolji.length; i++) {
+        najboljiList.innerHTML += "<p>"+najbolji[i].username+": "+najbolji[i].score+"</p>";
+    }
+
+    if(najboljiList.innerHTML=="")
+        najboljiList.innerHTML="Nema skora";
+
 }
