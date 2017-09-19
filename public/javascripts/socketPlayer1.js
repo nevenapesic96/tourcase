@@ -20,7 +20,7 @@ socket.on('nece',function (data) {
 });
 
 socket.on('hoce',function (data) {
-    alert(data.msg);
+    window.open('dvaIgraca','_self');
 });
 
 socket.on('napustio',function (data) {
@@ -30,6 +30,7 @@ socket.on('napustio',function (data) {
 
 function hocu() {
     socket.emit('hocu');
+    window.open('dvaIgraca','_self');
 };
 
 function necu() {
@@ -48,16 +49,3 @@ function izazovi(gamerName){
 function konektuj(){
     socket.emit('konektujSe',{username:ime.value});
 };
-
-function proba(){
-    var xmlHttl=new XMLHttpRequest();
-
-    xmlHttl.onreadystatechange=function (url,callback) {
-        if(xmlHttl.status==200 && xmlHttl.readyState==4){
-            //sta ovde treba
-        }
-    }
-    
-    xmlHttl.open('GET','/dvaIgraca',false);
-    xmlHttl.send();
-}

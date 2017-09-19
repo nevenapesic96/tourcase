@@ -4,7 +4,7 @@ var secondFound = 0;
 
     //ovo je kad player1 nadje
     function foundImage(itemId, eve) {
-      //  pronasaoPlayer1(itemId);
+        pronasaoPlayer1(itemId);
        if (!$("#" + itemId).hasClass('foundImg')) {
          var rotateSrc = $("#area" + itemId).attr('data-img');
          $("#rotateitem").attr('src', rotateSrc);
