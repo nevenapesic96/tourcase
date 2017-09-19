@@ -58,6 +58,14 @@ io.on('connection',function (socket) {
 
     socket.on('izazovi',function (data) {
         var socketZa=sockets[data.player2];
+        
+        var index=gamesUser.indexOf(usernames[socket.id]);
+        
+          if(index!=-1){
+            console.log(index);
+               delete gamesUser[index];
+          }
+
         gamesUser[data.player2]=usernames[socket.id];
         gamesUser[usernames[socket.id]]=data.player2;
         console.log(gamesUser[data.player2]+" salje: "+data.player2);
@@ -90,6 +98,10 @@ io.on('connection',function (socket) {
         var itemid=data.itemid;
         console.log(usernames[socket.id]+"je pronasao "+itemid);
         socket.broadcast.to(sockets[gamesUser[usernames[socket.id]]]).emit('player2',{itemid:itemid});
+      });
+
+      socket.on('gotovaIgra',function () {
+        delete gamesUser[usernames[socket.id]];
       });
 
     socket.on('disconnect',function () {

@@ -14,3 +14,8 @@ function rekonektuj(){
 function pronasaoPlayer1(itemId){
     socket.emit('player1',{itemid:itemId});
 };
+
+function gotovaIgra(){
+    socket.emit('gotovaIgra');
+    window.open('jedanIgrac','_self');
+}

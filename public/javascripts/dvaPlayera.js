@@ -24,7 +24,7 @@ var secondFound = 0;
              if (index > -1) {
                 slike.splice(index, 1);
              }
-             console.log("Random element: " +vratiRandomElement());
+             //console.log("Random element: " +vratiRandomElement());
              firstFound = $(".list-group .player1found").length;
              $("#player1ObjectCount").text(firstFound);
              secondFound = $(".list-group .player2found").length;
@@ -46,13 +46,21 @@ var secondFound = 0;
          $("#player1ObjectCount").text(firstFound);
          var secondFound = $(".list-group .player2found").length;
          $("#player2ObjectCount").text(secondFound);
-         var brojPoena = Math.round((stopwatch.times[0]*60+stopwatch.times[1] + stopwatch.times[2]/100)*100)/100;
+       //  var brojPoena = Math.round((stopwatch.times[0]*60+stopwatch.times[1] + stopwatch.times[2]/100)*100)/100;
          if(firstFound > secondFound){
-             window.alert("Pobedio je Player 1, sa rezultatom " +firstFound + ":" +secondFound +" za " +brojPoena +" sekundi");
+            prikaziRez("Pobedio je Player 1, sa rezultatom " +firstFound + ":" +secondFound);
+            
          }else{
-             window.alert("Pobedio je Player 2, sa rezultatom " +secondFound + ":" +firstFound+" za " +brojPoena +" sekundi");
+            prikaziRez("Pobedio je Player 2, sa rezultatom " +secondFound + ":" +firstFound);
          }
-         stopwatch.stop();
+     }
+
+     function prikaziRez(poruka) {
+        if(confirm(poruka)){
+            gotovaIgra();
+        }else{
+            gotovaIgra();
+        }
      }
      
      
@@ -74,7 +82,7 @@ var secondFound = 0;
      $(document).ready(function () {
      
          $('#mapname').imageMapResize();
-         resetGame();
+         //resetGame();
      
      });
      

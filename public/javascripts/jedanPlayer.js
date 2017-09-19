@@ -1,5 +1,6 @@
 var slike = ["item1","item2","item3","item4","item5","item6","item7"];
 var firstFound = 0;
+var iskoriscenHint=0;
 
 class Stopwatch {
     constructor(display, results) {
@@ -153,12 +154,14 @@ let stopwatch = new Stopwatch(
       $("#player1ObjectCount").text(0);
       $("#player2ObjectCount").text(0);
        
-       
+      iskoriscenHint=0;
       stopwatch.reset();
       stopwatch.start();
     }
     
     function hint(){
+        if(iskoriscenHint==0){
+            iskoriscenHint=1;
         var item = vratiRandomElement();
         switch (item[4]) {
         case "1":
@@ -182,6 +185,11 @@ let stopwatch = new Stopwatch(
         default:
             window.alert("Kombank arena: Izmedju dve vatre hehe");
             
+        }
+        
+    }
+    else{
+        window.alert("Iskoristili ste hint!");
     }
     }
 
