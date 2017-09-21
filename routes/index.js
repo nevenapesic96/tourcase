@@ -9,10 +9,8 @@ router.get('/', function(req, res, next) {
   router.get('/dvaIgraca',function (req,res) {
     if(!req.session.user){
       res.render('index.ejs');
-      console.log(1);
     }else{
     res.render('dvaIgraca.ejs',{user:req.session.user});
-    console.log(2);
   }
   });
 
@@ -83,8 +81,8 @@ router.get('/', function(req, res, next) {
         console.log(err);
         return res.status(400).send("Greska! ");
       }
-  
-      res.render('jedanIgrac.ejs',{user:req.session.user});
+      req.session.user=username;
+      res.render('index.ejs');
   
     })
     }

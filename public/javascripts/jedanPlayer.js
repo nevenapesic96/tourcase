@@ -263,9 +263,34 @@ function proslediIzazov(izazivac){
         necu();
     }
 }
+// Get the modal
+var moda = document.getElementById('myModal2');
+
+// Get the button that opens the modal
+var btn2 = document.getElementById("bestBtn");
+
+// Get the <span> element that closes the modal
+var span2 = document.getElementsByClassName("close2")[0];
+
+// When the user clicks on the button, open the modal 
+btn2.onclick = function() {
+    prikaziNajbolje();
+}
+
+// When the user clicks on <span> (x), close the modal
+span2.onclick = function() {
+    moda.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == moda) {
+        moda.style.display = "none";
+    }
+}
 
 function ispisiNajbolje(najbolji){
-    modal.style.display = "block";
+    moda.style.display = "block";
     var najboljiList = document.getElementById("najbolji-list");
     najboljiList.innerHTML = "";
 

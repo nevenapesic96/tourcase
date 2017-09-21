@@ -12,38 +12,37 @@
   <body>
 
         <div id="registerBox">
-                <h1>register</h1>
+                <h5>Register</h5>
                 <form action="/register" method="post">
-                  <div class="input"><span class="label">Ime</span>
-                    <input type="text" name="firstname" id="firstname" value="" placeholder=""/><br/><span class="label">Prezime</span>
-                    <input type="text" name="lastname" id="lastname" value="" placeholder=""/><br/><span class="label">Username</span>
-                    <input type="text" name="username" id="username" value="" placeholder=""/><br/><span class="label">Lozinka</span>
-                    <input type="password" name="password" id="password"/>
-                  </div>
+                    <input type="text" name="name" id="txtbox" placeholder="First Name"/>
+                    <input type="text" name="surname" id="txtbox"  placeholder="Last Name"/><label >Username</label>
+                    <input type="text" name="username" id="txtbox"  placeholder="Username"/><label >Password</label>
+                    <input type="password" name="password" id="txtbox" placeholder="Password"/>
                   <div class="actions">
-                    <input type="submit" value="register"/>
+                    <input id="registerUBoxu" type="submit" value="Register"/>
                   </div>
                 </form>
-                     <button onclick="prikazi('hide','register')">Close</button>
+                     <button id="registerUBoxu" onclick="prikazi('register')">Close</button>
         </div>
         
-        
-                 <div id="loginBox">
-                        <h1>login</h1>
-                        <form action="/login" method="post">
-                          <div class="input"><span class="label">Username</span>
-                            <input type="text" name="username" id="username" value="" placeholder=""/><br/><span class="label">Lozinka</span>
-                            <input type="password" name="password" id="password" value="" placeholder=""/>
-                          </div>
-                          <div class="actions">
-                            <input type="submit" value="login"/>
-                               </div>
-                        </form><br/>
-                              <button onclick="prikazi('hide','login')">Close</button>
-                 </div>
+         <div id="loginBox">
+                <h5>Login</h5>
+                <form action="/login" method="post">
+                  <div class="input"><label >Username</label>
+                    <input type="text" name="username" id="txtbox1"  placeholder="Username"/><label >Password</label>
+                    <input type="password" name="password" id="txtbox1"  placeholder="Password"/>
+                  </div>
+                  <div class="actions">
+                    <input id="loginUBoxu" type="submit" value="Login"/>
+                       </div>
+                </form><br/>
+                      <button id="loginUBoxu"  onclick="prikazi('login')">Close</button>
+         </div>
 
-     <button onclick="prikazi('show','register')">Register</button>
-     <button onclick="prikazi('show','login')">Login</button>
+      <div id="outer">
+          <div class="inner"><button   id="btn1" onclick="prikazi('register')">Register</button></div>
+          <div class="inner"><button   id="btn1" onclick="prikazi('login')">Login</button></div>
+      </div>
 
     <script src="/javascripts/loginRegister.js"></script>
      </body>

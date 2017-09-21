@@ -5,19 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Tour case</title>
   <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
   <link href="/stylesheets/style.css" rel="stylesheet">
 </head>
 
 <body>
-        <input type="hidden" value="<%= user.username %>" id="ime"><br>
+         <div id="heder">
+           <label >Username:</label>
+           <input type="visible" value="<%= user.username %>" id="ime" disabled class="input1"/>
+           <h1 class="text-center text-heading">Tour Case - Challenge mode</h1>
+        </div>
 
   <section class="game-view">
     <div class="container">
-     <h1 class="text-center text-heading">Tour case</h1>
+     
       
-      <div class="col-sm-8" style="height:400px">
+      <div class="col-sm-8" style="height:350px">
         <img id="myCanvas" src="images/bg.jpg" class="col-sm-12" style="height:100%" alt="alttext" usemap="#mapname">
 
         <map name="mapname" id="mapname">
@@ -54,11 +57,9 @@
           <li id="item7" class="list-group-item">Kombank arena</li>
         </ul>
       </div> <!--col-sm-4-->
-      <div> 
-      </div>
-
+    <div class="stopwatch"></div>
   </div> <!---container -->
-
+      
     
   </section>
   

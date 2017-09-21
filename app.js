@@ -32,6 +32,7 @@ app.use(cookieParser());
 app.use(session({secret:'secret',resave: false,
   saveUninitialized: true,
   cookie: { secure: !true }}));
+  
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
@@ -100,24 +101,36 @@ io.on('connection',function (socket) {
       });
 
       socket.on('upisiUBazu',function (data) {
-        var newscore=new Score();
-        newscore.username=usernames[socket.id];
-        newscore.score=data.brPoena;
-      
-        newscore.save(function (err,savedScore) {
-          if(err){
-            console.log(err);
-            return res.status(400).send("Greska! ");
+       
+        Score.findOne({username:usernames[socket.id]}, function(err, newscore) {
+          if(!err) {
+              if(!newscore) {
+                  newscore = new Score();
+                  newscore.username=usernames[socket.id];
+              }
+              newscore.score=data.brPoena;
+              newscore.save(function(err) {
+                  if(err) {
+                    console.log(err);
+                    return res.status(400).send("Greska! ");
+                  }
+                  else {
+                    console.log(usernames[socket.id]+" "+data.brPoena);
+                  }
+              });
           }
-      
+          else{
+            console.log('greska!');
+          }
+      });
+
           console.log(usernames[socket.id]+" "+data.brPoena);
       
-        })
       });
 
       socket.on('prikaziNajbolje',function () {
 
-          Score.find().sort({'score':1}).limit(1).exec(function (err,doc) {
+          Score.find().sort({'score':1}).limit(10).exec(function (err,doc) {
             if(err) console.log(err);
 
             else socket.emit('listaNajboljih',{najbolji:doc});

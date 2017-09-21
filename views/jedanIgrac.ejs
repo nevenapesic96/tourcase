@@ -10,33 +10,21 @@
 
 </head>
   <body>
-        <input type="hidden" value="<%= user.username %>" id="ime"><br>
-
-    <form action="/logout" method="get">
-        <input type="submit" value="logout"/>
-    </form>
-
-    <div id="najboljiModal" class="modal">
+    <div id="heder">
+      <label >Username:</label>
+      <input type="visible" value="<%= user.username %>" id="ime" disabled class="input1"/>
+      <h1 class="text-center text-heading">Tour Case - Single player</h1>
+    </div>
       
-                <!-- Modal content -->
-                <div class="modal-content">
-                  <span class="close">&times;</span>
-                  <div id="najbolji-list">
-                  </div>
-                </div>
-      
-     </div>
 
-    <button onclick="prikaziNajbolje()">Prikazi najbolje</button>
-
-    <div class="stopwatch"></div>
+   
 
 
     <section class="game-view">
             <div class="container">
-             <h1 class="text-center text-heading">Tour case</h1>
+             
               
-              <div class="col-sm-8" style="height:400px">
+              <div class="col-sm-8" style="height:350px">
                 <img id="myCanvas" src="images/bg.jpg" class="col-sm-12" style="height:100%" alt="alttext" usemap="#mapname">
         
                 <map name="mapname" id="mapname">
@@ -64,19 +52,23 @@
                 <ul class="list-group">
                   <li id="item1" class="list-group-item">Avalski toranj</li>
                   <li id="item2" class="list-group-item">Pobednik</li>
-                  <li id="item3" class="list-group-item">Teniski teren</li>
+                  <li id="item3" class="list-group-item">Noletov teniski teren</li>
                   <li id="item4" class="list-group-item">Spomenik knezu Mihailu</li>
                   <li id="item5" class="list-group-item">Beogradjanka</li>
                   <li id="item6" class="list-group-item">Hram Svetog Save</li>
                   <li id="item7" class="list-group-item">Kombank arena</li>
                 </ul>
               </div> <!--col-sm-4-->
-              <div> 
+               
+              <div style="display: inline-flex;"> 
                 <button class="btn btn-primary btn-start" onclick="resetGame();">Restart</button>
                 <button class="btn btn-primary btn-start" onclick="hint();">Hint</button>
                 <button class="btn btn-primary btn-start" id="gamersBtn">Online igraci</button>
+                <form action="/logout" method="get">
+                  <button type="submit" class="btn btn-primary btn-start" id="gamersBtn">Logout</button>
+                </form>
             </div>
-      
+              <div class="stopwatch"></div>
                     <!-- The Modal -->
               <div id="myModal" class="modal">
       
@@ -92,6 +84,23 @@
           </div> <!---container -->
       
         </section>
+
+                <!-- -->
+        <button class="btn btn-primary btn-start" id="bestBtn">Lista Najboljih</button>
+
+        <!-- The Modal -->
+        <div id="myModal2" class="modal2">
+
+          <!-- Modal content -->
+          <div class="modal-content2">
+            <span class="close2">&times;</span>
+            <div id="najbolji-list">
+                  </div>
+          </div>
+
+        </div>
+               
+        <!--  -->
 
 
     <script src="/socket.io/socket.io.js"></script>

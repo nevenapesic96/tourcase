@@ -1,3 +1,90 @@
+body
+{
+  background-image:url("../images/imag.jpg");
+  background-repeat: no-repeat;
+  background-size:100% 720px;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+#btn1
+{
+ font-family: arial;
+ text-transform: uppercase;
+ font-size: 30px;
+ width: 240px;
+ height: 60px;
+ border-radius: 80px;
+ line-height: 60px;
+ text-align: center;
+ border:3px solid #134957;
+ display: block;
+ text-decoration: none;
+ color: #134957;
+ position: relative;
+ overflow: hidden;
+ background: transparent;
+ transition: .3s;
+}
+
+#btn1:before
+{
+content: '';
+width: 100%;
+height: 100%;
+position: absolute;
+background: #009688;
+opacity: .5;
+top: -100%;
+left: 0;
+z-index: -1;
+transition: .3s;
+}
+
+#btn1:after
+{
+content: '';
+width: 100%;
+height: 100%;
+position: absolute;
+background: #009688;
+top: -100%;
+left: 0;
+z-index: -1;
+transition: .3s;
+transition-delay: .2s;
+}
+
+#btn1:hover
+{
+color: #fff;
+}
+
+#btn1:hover:before
+{
+top: 0;
+}
+#btn1:hover:after
+{
+top: 0;
+}
+
+
+#outer
+{
+  margin-top: 20px;
+  margin-bottom: 30px;
+    width:100%;
+    text-align: center;
+}
+
+.inner
+{
+    display: inline-block;
+}
+
+
+/*za igricu*/
 .btn-start {
   margin-top:10px;
   margin-left:15px;
@@ -9,43 +96,112 @@
   margin-bottom:30px;
 }
 .player1found {
-	color:blue;
+  color:blue;
 }
 .player2found {
-	color:red;
+  color:red;
 }
-#registerBox{
-margin: 0; 
-margin-left: 40%; 
-margin-right: 40%;
-margin-top: 50px; 
-padding-top: 10px; 
-width: 20%; 
-height: 150px; 
-position: absolute; 
-background: #FBFBF0; 
-border: solid #000000 2px; 
-z-index: 9; 
-font-family: arial; 
-visibility: hidden; 
-color: black;
+/*za igricu*/
+
+
+
+/*register*/
+#registerBox
+{
+  width:360px;
+  background: #24303c;
+  padding: 30px;
+  color: black;
+  font-family: arial;
+  border-radius: 3px;
+  visibility: hidden;
+  position: absolute; 
+  margin: 0; 
+  margin-left: 22%; 
+  margin-right: 40%;
+  margin-top: 70px; 
 }
-#loginBox{
-color: black;
-margin: 0; 
-margin-left: 40%; 
-margin-right: 40%;
-margin-top: 50px; 
-padding-top: 10px; 
-width: 20%; 
-height: 150px; 
-position: absolute; 
-background: #FBFBF0; 
-border: solid #000000 2px; 
-z-index: 9; 
-font-family: arial; 
-visibility: hidden; 
+
+#registerBox h5
+{
+margin:0;
+font-size: 22px;
+margin-bottom: 20px;
+font-weight: normal;
 }
+
+#txtbox
+{
+  background: :#24303c;
+  border: 1px solid #1f53c5;
+  font-size: 18px;
+  font-family: arial;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+}
+
+#registerUBoxu
+{
+  width: 100%;
+  margin: 16px 0px;
+  background: #1f53c5;
+  border: 0;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+}
+/*register*/
+
+
+#loginBox
+{
+  width:360px;
+  background: #24303c;
+  padding: 30px;
+  color: black;
+  font-family: arial;
+  border-radius: 3px;
+  visibility: hidden;
+  position: absolute; 
+  margin: 0; 
+  margin-left: 52%; 
+  margin-right: 70%;
+  margin-top: 70px; 
+}
+
+#loginBox h5
+{
+margin:0;
+font-size: 22px;
+margin-bottom: 20px;
+font-weight: normal;
+}
+
+#txtbox1
+{
+  background: :#24303c;
+  border: 1px solid #1f53c5;
+  font-size: 18px;
+  font-family: arial;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border-radius: 4px;
+}
+
+#loginUBoxu
+{
+  width: 100%;
+  margin: 16px 0px;
+  background: #1f53c5;
+  border: 0;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+}
+
 
 
 /* The Modal (background) */
@@ -85,3 +241,74 @@ visibility: hidden;
   text-decoration: none;
   cursor: pointer;
 }
+.stopwatch {
+    margin: 0 auto;
+    text-align: left;
+    width: 400px;
+    font-size: 18px;
+}
+
+/*1 igrac*/
+
+h1
+{
+  margin-left: -50px;
+color:white;
+font-size: 33px;
+text-align: center;
+font-family: arial;
+font-style: normal;
+font-variant: small-caps;
+}
+
+
+.input1
+{
+height: 27px;
+width: 80px;
+}
+
+
+
+/*1 igrac*/
+
+
+/*modal 2*/
+/* The Modal (background) */
+.modal2 {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content2 {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close2 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close2:hover,
+.close2:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*modal 2*/
